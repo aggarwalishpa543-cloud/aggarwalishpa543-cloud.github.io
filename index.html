@@ -837,6 +837,7 @@
         <span class="brand-badge">M.Sc., B.Ed.</span>
       </a>
       <ul class="nav-links">
+        <li><a href="#video-intro">Video</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
@@ -932,6 +933,69 @@
       </div>
     </div>
   </div>
+
+  <!-- Video Introduction Section -->
+  <section id="video-intro" style="padding: 70px 0 50px; background: #ffffff;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 36px;">
+        <span class="section-tag">Video Introduction</span>
+        <h2 class="section-title">Meet Mrs. Ishpa Aggarwal</h2>
+        <p class="section-desc">Watch an introduction short video highlighting my teaching journey, pedagogical approach, and student philosophy.</p>
+      </div>
+
+      <div class="video-container" style="max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: center; background: #f8fafc; border-radius: var(--radius-lg); padding: 36px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+        
+        <!-- Vertical Video Player Frame -->
+        <div class="video-player-wrap" style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.18); border: 5px solid #1e293b; background: #000; aspect-ratio: 9/16; max-height: 600px; margin: 0 auto;">
+          <video id="introPlayer" controls playsinline preload="metadata" poster="video_poster.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <source id="videoSource" src="intro_zh.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- Video Description & Language Switcher -->
+        <div class="video-info" style="display: flex; flex-direction: column; justify-content: center; gap: 20px;">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: #eff6ff; color: var(--primary); padding: 5px 14px; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px;">
+              <i class="fa-solid fa-play"></i> Vertical Shorts Edition (1080×1920)
+            </div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; line-height: 1.25;">
+              Inspiring Mathematical Curiosity
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              Created with programmatic motion design, this vertical short video showcases my <strong>7+ years of teaching</strong> across Taiwan and India, hands-on STEAM math puzzles, Olympiad logical thinking, and academic leadership.
+            </p>
+          </div>
+
+          <!-- Language Selector Tabs -->
+          <div style="background: #ffffff; padding: 18px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+            <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-language" style="color: var(--primary);"></i> Switch Video Language:
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <button id="btnZh" onclick="switchVideo('intro_zh.mp4', 'zh')" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">
+                🇹🇼 Traditional Chinese (台灣繁中)
+              </button>
+              <button id="btnEn" onclick="switchVideo('intro_en.mp4', 'en')" class="btn btn-outline" style="padding: 8px 18px; font-size: 0.88rem;">
+                🇬🇧 English (英語)
+              </button>
+            </div>
+          </div>
+
+          <!-- Video Actions -->
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <a id="downloadVideoBtn" href="intro_zh.mp4" download class="btn btn-outline" style="font-size: 0.88rem; padding: 9px 18px;">
+              <i class="fa-solid fa-download"></i> Download Video (MP4)
+            </a>
+            <a href="#about" class="btn btn-accent" style="font-size: 0.88rem; padding: 9px 18px;">
+              <i class="fa-solid fa-user-graduate"></i> Read Full Bio
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- About Section -->
   <section id="about">
@@ -1327,7 +1391,27 @@
       <p>© 2026 Mrs. Ishpa Aggarwal · All Rights Reserved.</p>
       <p style="font-size: 0.8rem; margin-top: 6px;">Hosted with GitHub Pages · Built for Professional Academic Portfolio</p>
     </div>
-  </footer>
+  <script>
+    function switchVideo(src, lang) {
+      var player = document.getElementById('introPlayer');
+      var source = document.getElementById('videoSource');
+      var dlBtn = document.getElementById('downloadVideoBtn');
+      var btnZh = document.getElementById('btnZh');
+      var btnEn = document.getElementById('btnEn');
 
+      source.src = src;
+      dlBtn.href = src;
+      player.load();
+      player.play();
+
+      if (lang === 'zh') {
+        btnZh.className = 'btn btn-primary';
+        btnEn.className = 'btn btn-outline';
+      } else {
+        btnZh.className = 'btn btn-outline';
+        btnEn.className = 'btn btn-primary';
+      }
+    }
+  </script>
 </body>
 </html>
